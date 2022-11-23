@@ -1,0 +1,77 @@
+  Beer Load (0.2ms)  SELECT "beers".* FROM "beers" WHERE "beers"."name" = ? LIMIT ?  [["name", "Punk IPA"], ["LIMIT", 1]]
+=>
+#<Beer:0x00007f51122a9a58
+...
+irb(main):006:0> p
+=>
+#<Beer:0x00007f51122a9a58
+ id: 8,
+  TRANSACTION (7.5ms)  commit transaction
+=>
+#<Rating:0x00007f5112572a78
+ id: 5,
+ score: 22,
+ beer_id: 8,
+ created_at: Wed, 23 Nov 2022 16:42:37.216670000 UTC +00:00,
+ updated_at: Wed, 23 Nov 2022 16:42:37.216670000 UTC +00:00>
+irb(main):009:0> p = Beer.find_by name: "Nanny State"
+score", 44], ["beer_id", 9], ["created_at", "2022-11-23 16:42:56.293682"], ["updated_at", "2022-11-23 16:42:56.293682"]]
+  TRANSACTION (11.7ms)  commit transaction
+=>
+#<Rating:0x00007f5112523748
+ id: 7,
+ score: 44,
+ beer_id: 9,
+ created_at: Wed, 23 Nov 2022 16:42:56.293682000 UTC +00:00,
+ updated_at: Wed, 23 Nov 2022 16:42:56.293682000 UTC +00:00>
+irb(main):012:0> Ratings.all
+(irb):12:in `<main>': uninitialized constant Ratings (NameError)
+
+Ratings.all
+^^^^^^^
+irb(main):013:0> Rating.all
+  Rating Load (0.1ms)  SELECT "ratings".* FROM "ratings"
+=>
+[#<Rating:0x00007f5111bbaf08
+  id: 1,
+  score: 10,
+  beer_id: 1,
+  created_at: Wed, 23 Nov 2022 16:38:13.904084000 UTC +00:00,
+  updated_at: Wed, 23 Nov 2022 16:38:13.904084000 UTC +00:00>,
+ #<Rating:0x00007f5111bbadf0
+  id: 2,
+  score: 21,
+  beer_id: 1,
+  created_at: Wed, 23 Nov 2022 16:38:17.918843000 UTC +00:00,
+  updated_at: Wed, 23 Nov 2022 16:38:17.918843000 UTC +00:00>,
+ #<Rating:0x00007f5111bbad28
+  id: 3,
+  score: 17,
+  beer_id: 1,
+  created_at: Wed, 23 Nov 2022 16:38:22.139428000 UTC +00:00,
+  updated_at: Wed, 23 Nov 2022 16:38:22.139428000 UTC +00:00>,
+ #<Rating:0x00007f5111bbac60
+  id: 4,
+  score: 12,
+  beer_id: 8,
+  created_at: Wed, 23 Nov 2022 16:42:34.813415000 UTC +00:00,
+  updated_at: Wed, 23 Nov 2022 16:42:34.813415000 UTC +00:00>,
+ #<Rating:0x00007f5111bbab98
+  id: 5,
+  score: 22,
+  beer_id: 8,
+  created_at: Wed, 23 Nov 2022 16:42:37.216670000 UTC +00:00,
+  updated_at: Wed, 23 Nov 2022 16:42:37.216670000 UTC +00:00>,
+ #<Rating:0x00007f5111bbaad0
+  id: 6,
+  score: 23,
+  beer_id: 9,
+  created_at: Wed, 23 Nov 2022 16:42:54.049988000 UTC +00:00,
+  updated_at: Wed, 23 Nov 2022 16:42:54.049988000 UTC +00:00>,
+ #<Rating:0x00007f5111bbaa08
+  id: 7,
+  score: 44,
+  beer_id: 9,
+  created_at: Wed, 23 Nov 2022 16:42:56.293682000 UTC +00:00,
+  updated_at: Wed, 23 Nov 2022 16:42:56.293682000 UTC +00:00>]
+irb(main):014:0>
