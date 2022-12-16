@@ -1,8 +1,8 @@
 class BeerClub < ApplicationRecord
   has_many :memberships
-  has_many :members, through: :memberships, source: :user 
+  has_many :members, through: :memberships, source: :user
 
   def to_s
-    "#{name}"
+    name.to_s
   end
 end
