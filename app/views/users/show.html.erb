@@ -23,7 +23,7 @@
   <p><strong>Clubs:</strong></p>
   <p>
   <% @user.memberships.each do |membership| %>
-    <li> <%= membership.to_s %> </li>
+    <li> <%= membership.beer_club.to_s %> </li>
   <% end %>
   </p>
 <% end %>
