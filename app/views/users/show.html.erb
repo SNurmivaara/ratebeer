@@ -12,7 +12,11 @@
   Has made <%= pluralize(@user.ratings.count, 'rating') %> with an average of <%= @user.average_rating %>
   <p>
   <% @user.ratings.each do |rating| %>
-    <li> <%= render rating %> <%= button_to 'delete', rating, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %> </li>
+    <li> <%= render rating %> 
+      <% if @user == current_user %>
+        <%= button_to 'delete', rating, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %> 
+      <% end %>
+    </li>
   <% end %>
   </p>
 <% end %>
@@ -28,9 +32,11 @@
   </ul>
 <% end %>
 
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
+<% if @user == current_user %>
+  <div>
+    <%= link_to "Edit this user", edit_user_path(@user) %> |
+    <%= link_to "Back to users", users_path %>
 
-  <%= button_to "Destroy this user", @user, method: :delete %>
-</div>
+    <%= button_to "Destroy this user", @user, method: :delete %>
+  </div>
+<% end %>

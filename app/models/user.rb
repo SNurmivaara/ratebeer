@@ -8,8 +8,8 @@ class User < ApplicationRecord
 
   validates :password, format: { with: /\A(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{4,}\z/, message: "Please check that the password is at least 4 characters long and has an uppercase letter and a number" }
 
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
   has_many :beers, through: :ratings
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :beer_clubs, through: :memberships
 end
