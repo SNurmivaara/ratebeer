@@ -8,16 +8,25 @@
 <% if @user.ratings.empty? %>
   User hasn't rated any beers!
 <% else %>
+  <p><strong>Ratings:</strong></p>
   Has made <%= pluralize(@user.ratings.count, 'rating') %> with an average of <%= @user.average_rating %>
-<% end %>
-
-<p><strong>Ratings:</strong></p>
-
-<p>
+  <p>
   <% @user.ratings.each do |rating| %>
     <li> <%= render rating %> <%= button_to 'delete', rating, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %> </li>
   <% end %>
-</p>
+  </p>
+<% end %>
+
+<% if @user.memberships.empty? %>
+  User hasn't joined any clubs!
+<% else %>
+  <p><strong>Clubs:</strong></p>
+  <p>
+  <% @user.memberships.each do |membership| %>
+    <li> <%= membership.to_s %> </li>
+  <% end %>
+  </p>
+<% end %>
 
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |

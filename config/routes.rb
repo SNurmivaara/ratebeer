@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  resources :beer_clubs
   resources :users
   resources :beers
   resources :breweries
   resources :ratings, only: [:index, :new, :create, :destroy]
+  resources :memberships, only: [:index, :new, :create, :destroy]
   resource :session, only: [:new, :create, :destroy]
   #get 'ratings', to:'ratings#index'
   #get 'ratings/new', to:'ratings#new'

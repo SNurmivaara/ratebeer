@@ -1,0 +1,25 @@
+<div id="<%= dom_id beer_club %>">
+  
+  <h2>
+    <%= link_to beer_club.name, beer_club %>
+  </h2>
+
+  <i>
+    Established in <%= beer_club.founded %>
+  </i>
+
+  <p>Number of members: <%= @beer_club.members.count %></p>
+
+  <% if beer_club.members.empty? %>
+    The club has no members!
+  <% else %>
+    Beer club has <%= pluralize(beer_club.members.count, 'member') %> 
+  <% end %>
+
+  <p>
+  <% beer_club.members.each do |member| %>
+    <%= link_to member.username, member %>
+  <% end %>
+  </p>
+
+</div>
