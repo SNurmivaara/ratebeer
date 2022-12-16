@@ -5,7 +5,7 @@ class MembershipsController < ApplicationController
 
   def new
     @membership = Membership.new
-    @beer_clubs = BeerClub.all
+    @beer_clubs = BeerClub.where('id NOT IN (SELECT beer_club_id FROM memberships WHERE user_id = ?)', user_id=current_user.id)
   end
 
   def create
