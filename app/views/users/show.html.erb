@@ -21,11 +21,11 @@
   User hasn't joined any clubs!
 <% else %>
   <p><strong>Clubs:</strong></p>
-  <p>
+  <ul>
   <% @user.memberships.each do |membership| %>
     <li> <%= link_to membership.beer_club.to_s, membership.beer_club %> </li>
   <% end %>
-  </p>
+  </ul>
 <% end %>
 
 <div>
