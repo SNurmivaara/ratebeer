@@ -1,5 +1,7 @@
 # README
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/040ca9def984d607f378/maintainability)](https://codeclimate.com/github/SNurmivaara/ratebeer/maintainability)
+
 Coursework for web-server programming on Ruby on Rails 
 
 Materials: https://github.com/mluukkai/WebPalvelinohjelmointi2022
