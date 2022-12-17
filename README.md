@@ -55,3 +55,10 @@ rspec spec
 rspec spec</models/user_spec.rb>
 
 ```
+
+### Debugging
+
+```
+# Add this to the line you wish to examine at
+binding.pry
+```

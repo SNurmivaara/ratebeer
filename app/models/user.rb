@@ -12,4 +12,22 @@ class User < ApplicationRecord
   has_many :beers, through: :ratings
   has_many :memberships, dependent: :destroy
   has_many :beer_clubs, through: :memberships
+
+  def favorite_beer
+    return nil if ratings.empty?
+
+    ratings.max_by(&:score).beer
+  end
+
+  def favorite_style
+    return nil if ratings.empty?
+
+    ratings.joins(:beer).group(:style).count.max_by { |_style, votes| votes }.first
+  end
+
+  def favorite_brewery
+    return nil if ratings.empty?
+
+    Brewery.find(ratings.joins(beer: :brewery).group(:brewery_id).count.max_by{ |_id, votes| votes }.first)
+  end
 end
