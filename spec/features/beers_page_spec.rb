@@ -4,6 +4,11 @@ include Helpers
 
 describe "Beers page" do
   let!(:brewery) { FactoryBot.create :brewery, name: "Koff" }
+  let!(:user) { FactoryBot.create :user }
+
+  before :each do
+    sign_in(username: "Pekka", password: "Foobar1")
+  end
 
   it "you can add a beer if the name is valid" do
     visit new_beer_path
