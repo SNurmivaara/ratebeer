@@ -9,7 +9,7 @@ class MembershipsController < ApplicationController
   end
 
   def create
-    @membership = Membership.new params.require(:membership).permit(:beer_club_id)
+    @membership = Membership.new params.require(:membership).permit(:beer_club_id, :user_id)
     @membership.user = current_user
 
     if @membership.save
@@ -21,8 +21,11 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-    membership = membership.find(params[:id])
-    membership.delete
-    redirect_to current_user
+    @membership = Membership.find(params[:membership_id]).require(:membership_id)
+    if @membership.destroy
+      redirect_to current_user, notice: "Club left succesfully"
+    else
+      redirect_to current_user, notice: "Leaving club failed"
+    end
   end
 end
