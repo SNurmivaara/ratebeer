@@ -13,7 +13,7 @@ class MembershipsController < ApplicationController
     @membership.user = current_user
 
     if @membership.save
-      redirect_to user_path current_user
+      redirect_to beer_club_path(@membership.beer_club), notice: "#{current_user.username} welcome to the club."
     else
       @beer_clubs = BeerClubs.all
       render :new, status: :unprocessable_entity
