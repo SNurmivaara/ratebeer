@@ -1,6 +1,6 @@
-# fly.toml file generated for withered-pine-8011 on 2022-11-22T14:40:53+02:00
+# fly.toml file generated for ratebeer-snurmivaara on 2022-12-22T17:21:36+02:00
 
-app = "withered-pine-8011"
+app = "ratebeer-snurmivaara"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
