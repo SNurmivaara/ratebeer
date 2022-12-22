@@ -13,7 +13,7 @@ class RatingsController < ApplicationController
     @rating.user = current_user
 
     if @rating.save
-      redirect_to user_path current_user
+      redirect_to user_path current_user, notice: "Rating created succesfully!"
     else
       @beers = Beer.all
       render :new, status: :unprocessable_entity
