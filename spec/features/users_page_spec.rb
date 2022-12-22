@@ -40,7 +40,7 @@ describe "User" do
 
     it "can see favorite style" do
       sign_in(username: "Pekka", password: "Foobar1")
-      expect(page).to have_content 'Favorite beer style: Lager'
+      expect(page).to have_content 'Favorite beer style: teststyle'
     end
 
     it "can see favorite brewery" do

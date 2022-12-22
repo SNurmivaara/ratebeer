@@ -5,6 +5,7 @@ include Helpers
 describe "Beers page" do
   let!(:brewery) { FactoryBot.create :brewery, name: "Koff" }
   let!(:user) { FactoryBot.create :user }
+  let!(:style) { FactoryBot.create :style }
 
   before :each do
     sign_in(username: "Pekka", password: "Foobar1")
@@ -13,7 +14,7 @@ describe "Beers page" do
   it "you can add a beer if the name is valid" do
     visit new_beer_path
     fill_in('beer[name]', with: 'testikalja')
-
+    
     expect{
       click_button "Create Beer"
     }.to change{Beer.count}.from(0).to(1)

@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe Beer, type: :model do
   describe "with" do
     let(:test_brewery){ Brewery.new name: "Testipanimo", year: 2000 }
-    let(:valid_test_beer){ Beer.create name: "Testikalja", style: "Testityyli", brewery: test_brewery }
-    let(:noname_test_beer){ Beer.create style: "Testityyli", brewery: test_brewery }
+    let(:test_style) { FactoryBot.create(:style) }
+    let(:valid_test_beer){ Beer.create name: "Testikalja", style: test_style, brewery: test_brewery }
+    let(:noname_test_beer){ Beer.create style: test_style, brewery: test_brewery }
     let(:nostyle_test_beer){ Beer.create name: "Testikalja", brewery: test_brewery }
 
     it "proper values is saved" do

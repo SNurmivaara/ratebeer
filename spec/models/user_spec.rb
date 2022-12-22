@@ -47,13 +47,18 @@ RSpec.describe User, type: :model do
     end
 
     it "is the one that's in most ratings if multiple ratings" do
-      beer = FactoryBot.create(:beer, style: "paleale")
+      style = FactoryBot.create(:style, name: "bad")
+      beer = FactoryBot.create(:beer, style: style)
       FactoryBot.create(:rating, beer: beer, score: 10, user: user )
 
-      expect(user.favorite_style).to eq("paleale")
+      expect(user.favorite_style.name).to eq("bad")
 
-      create_beers_with_many_ratings({user: user}, 10, 20)
-      expect(user.favorite_style).to eq("Lager")
+      style2 = FactoryBot.create(:style, name: "good")
+      beer2 = FactoryBot.create(:beer, style: style2)
+      FactoryBot.create(:rating, beer: beer2, score: 10, user: user ) 
+      FactoryBot.create(:rating, beer: beer2, score: 10, user: user ) 
+
+      expect(user.favorite_style.name).to eq("good")
     end
   end
 
