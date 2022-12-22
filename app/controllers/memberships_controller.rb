@@ -21,8 +21,10 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-    @membership = Membership.find(params[:membership_id]).require(:membership_id)
-    if @membership.destroy
+    search = params.require(:membership).permit(:beer_club_id, :user_id)
+    membership = Membership.where("user_id = ? AND beer_club_id = ?", search[:beer_club_id], search[:user_id])[0]
+    membership.destroy
+    if membership.destroyed?
       redirect_to current_user, notice: "Club left succesfully"
     else
       redirect_to current_user, notice: "Leaving club failed"
