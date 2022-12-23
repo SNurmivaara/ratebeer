@@ -1,8 +1,59 @@
 
 
-<h1>List of ratings</h1>
+<h1>Ratings</h1>
 
-<p>Number of ratings: <%= @ratings.count %></p>
+<div class="stats container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Best beers</h3>
+      <table class="table">
+        <thead>
+          <th>Beer</th>
+          <th>Average</th>
+        </thead>
+        
+        <% @top_beers.each do |beer| %>
+          <tr>
+            <td><%= beer.name %></td>
+            <td><%= beer.average_rating %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <h3>Best breweries</h3>
+      <table class="table">
+        <thead>
+          <th>Brewery</th>
+          <th>Average</th>
+        </thead>
+        
+        <% @top_breweries.each do |brewery| %>
+          <tr>
+            <td><%= brewery.name %></td>
+            <td><%= brewery.average_rating %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <h3>Best styles</h3>
+      <table class="table">
+        <thead>
+          <th>Style</th>
+          <th>Average</th>
+        </thead>
+        
+        <% @top_styles.each do |style| %>
+          <tr>
+            <td><%= style.name %></td>
+            <td><%= style.average_rating %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
 
 <div id="ratings">
     <ul>
