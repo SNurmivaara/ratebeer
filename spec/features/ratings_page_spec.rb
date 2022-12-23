@@ -14,9 +14,9 @@ describe "Ratings page" do
     sign_in(username: "Pekka", password: "Foobar1")
   end
 
-  it "lists the ratings and their total number" do
+  it "lists the ratings" do
     visit ratings_path
-    expect(page).to have_content "Number of ratings: 2"
+    expect(page).to have_content "Karhu"
   end
 
   it "when a new rating is given, it is registered to the beer and user who is signed in" do
