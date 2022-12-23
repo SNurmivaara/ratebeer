@@ -55,10 +55,20 @@
   </div>
 </div>
 
-<div id="ratings">
+<div id="top-users">
+  <h4>Most active users</h4>
+    <ol>
+      <% @top_users.each do |user| %>
+        <li><%= user.username %></li>
+      <% end %>
+    </ol>
+<div>
+
+<div id="recent">
+  <h4>Recent ratings</h4>
     <ul>
-        <% @ratings.each do |rating| %>
-            <li> <%= render rating %> <%= link_to rating.user.username, rating.user %> </li>
+        <% @ratings.recent.each do |rating| %>
+            <li><%= render rating %></li>
         <% end %>
     </ul>
 </div>

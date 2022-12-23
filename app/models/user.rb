@@ -31,4 +31,9 @@ class User < ApplicationRecord
 
     Brewery.find(ratings.joins(beer: :brewery).group(:brewery_id).count.max_by{ |_id, votes| votes }.first)
   end
+
+  def self.top(lim)
+    sorted_by_rating_count_in_desc_order = User.all.sort_by{ |u| u.ratings.count }.reverse
+    sorted_by_rating_count_in_desc_order.first(lim)
+  end
 end
