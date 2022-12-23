@@ -23,7 +23,6 @@ class MembershipsController < ApplicationController
   def destroy
     search = params.require(:membership).permit(:beer_club_id, :user_id)
     membership = Membership.find_by("user_id = ? AND beer_club_id = ?", search[:user_id][0], search[:beer_club_id])
-    binding.pry
     if membership
       membership.destroy
       redirect_to current_user, notice: "Club left succesfully"

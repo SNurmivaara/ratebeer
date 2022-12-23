@@ -5,9 +5,28 @@
 <%= link_to 'list of breweries', breweries_path %>
 
 <div id="beers">
+  <table class="table table-hover">
+    <thead>
+      <th>name</th>
+      <th>style</th>
+      <th>brewery</th>
+      <th>ratings</th>
+    </thead>
+
   <% @beers.each do |beer| %>
-    <%= render beer %>
+  <tr>
+    <td><%= link_to beer.name, beer %></td>
+    <td><%= link_to beer.style.name, beer.style %></td>
+    <td><%= link_to beer.brewery.name, beer.brewery %></td>
+    <% if beer.ratings.empty? %>
+      <td>Not rated</td>
+    <% else %>
+      <td><%= beer.average_rating %></td>
+    <% end %>
+  </tr>
   <% end %>
+
+  </table>
 </div>
 
 <%= link_to('New Beer', new_beer_path) if current_user %>
